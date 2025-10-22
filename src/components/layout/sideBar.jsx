@@ -12,19 +12,20 @@ export default function SideBar() {
   return (
     <div>
       {/* logo */}
-      <div className="flex m-2 gap-1 items-end pr-10 pl-2 py-2 ">
+      <div className="flex my-4 gap-1 items-center pr-10 pl-4 py-2 ">
         {/* logo icon */}
         <div>
           <DashboardIcon
             sx={{
               backgroundColor: "#755fe3",
               borderRadius: "20px",
-              padding: "5px",
+              padding: "8px",
+              fontSize: "35px",
             }}
           />
         </div>
         {/* logo text */}
-        <div> DashBoard</div>
+        <div className="pl-2 font-bold text-xl"> DashBoard</div>
       </div>
       <Divider
         orientation="horizontal"

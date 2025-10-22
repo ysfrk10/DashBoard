@@ -1,5 +1,6 @@
 import Divider from "@mui/material/Divider";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 // icons
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import WebRoundedIcon from "@mui/icons-material/WebRounded";
@@ -11,6 +12,18 @@ import WebAssetOutlinedIcon from "@mui/icons-material/WebAssetOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  // يقفل لما تدوس برا المينيو
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
   return (
     <div className="h-60  ">
       <div
@@ -41,32 +54,35 @@ export default function Header() {
           />
           <span className="absolute top-1 right-1 w-3 h-3 bg-[#8953e0] rounded-full"></span>
         </div>
-        <IconButton sx={{ color: "white" }} onClick={() => setOpen(!open)}>
-          <PersonIcon
-            sx={{
-              position: "absolute",
-              top: "-20px",
-              backgroundColor: "#8953e0",
-              borderRadius: "50%",
-              transition: "0.3s",
-              cursor: "pointer",
-              padding: "8px",
-              fontSize: "35px",
-            }}
-            className="hover:scale-105"
-          />
-        </IconButton>
-        {open ? <UserSettings /> : null}
+        <div
+          className="relative top-1"
+          ref={menuRef}
+          onClick={() => setOpen(!open)}
+        >
+          <IconButton sx={{ color: "white" }}>
+            <PersonIcon
+              sx={{
+                backgroundColor: "#8953e0",
+                borderRadius: "50%",
+                transition: "0.3s",
+                cursor: "pointer",
+                padding: "8px",
+                fontSize: "35px",
+              }}
+            />
+          </IconButton>
+
+          {open && (
+            <div
+              className="absolute left-[20%] top-[20%] 
+          text-white p-4 rounded-lg shadow-lg z-50"
+            >
+              <UserSettings />
+            </div>
+          )}
+        </div>
       </div>
-      <Divider
-        flexItem
-        sx={{
-          backgroundColor: "#313259",
-          width: "100vw",
-          height: "0.5px",
-          marginY: 1,
-        }}
-      />
+
       <HomeLayOut />
     </div>
   );
@@ -97,7 +113,7 @@ function UserSettings() {
     <div
       className="absolute top-12 right-0 z-20 border-[#7a5de3] 
     border-1 rounded-md p-2 w-[200px] transition duration-300
-    flex flex-col gap-2 "
+    flex flex-col gap-2 bg-[#101829]"
     >
       <h3>My Account</h3>
       <Divider
@@ -157,7 +173,6 @@ function HomeLayOut() {
           Welcome back! Here's your business overview.
         </p>
       </div>
-
       <div className="flex gap-8">
         {/* 1st card */}
         <div
@@ -216,6 +231,72 @@ function HomeLayOut() {
           </div>
         </div>
       </div>
+      <div className="flex gap-3">
+        <div className="w-[60%] bg-[#212d40] mt-4 mx-4 rounded-xl">
+          <h1 className="text-2xl font-bold p-4">Revenue Overview</h1>
+          <p className="text-sm p-4 text-[#94a3b8] ">
+            Monthly revenue for the last 7 months
+          </p>
+          <StatusPieChart />
+        </div>
+        <div className="w-[50%] bg-[#212d40] mt-4 mx-4 rounded-xl">
+          <div>
+            <h1 className="text-4xl font-bold pl-10 pt-10">Quick Stats</h1>
+            <p className="text-lg pl-10 text-[#94a3b8]  ">
+              Performance metrics at a glance
+            </p>
+          </div>
+          <div
+            className="flex justify-between bg-[#212e42] px-10 py-4
+          rounded-md items-end"
+          >
+            <h2 className="font text-xl">Avg. Order Value</h2>
+            <p className="font-bold text-2xl text-[#8953e0]">$127.50</p>
+          </div>
+          <div
+            className="flex justify-between bg-[#212e42] px-10 py-4
+          rounded-md items-end"
+          >
+            <h2 className="font text-xl">Customer Lifetime Value</h2>
+            <p className="font-bold text-2xl text-[#8953e0]">$1,248</p>
+          </div>
+          <div
+            className="flex justify-between bg-[#212e42] px-10 py-4
+          rounded-md items-end"
+          >
+            <h2 className="font text-xl">Churn Rate</h2>
+            <p className="font-bold text-2xl text-[#8953e0]">2.3%</p>
+          </div>
+          <div
+            className="flex justify-between bg-[#212e42] px-10 py-4
+          rounded-md items-end"
+          >
+            <h2 className="font text-xl">Monthly Recurring Revenue</h2>
+            <p className="font-bold text-2xl text-[#8953e0]">$24,891</p>
+          </div>
+        </div>
+      </div>
     </div>
+  );
+}
+
+function StatusPieChart() {
+  const data = [
+    { name: "18-24", uv: 31.47, fill: "#8884d8" },
+    { name: "25-29", uv: 26.69, fill: "#83a6ed" },
+    { name: "50+", uv: 2.63, fill: "#d0ed57" },
+    { name: "Unknown", uv: 6.67, fill: "#ffc658" },
+  ];
+  return (
+    <ResponsiveContainer height={300} width="100%">
+      <PieChart>
+        <Pie data={data} dataKey="uv" cx="50%" cy="50%" outerRadius={120} label>
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={entry.fill} />
+          ))}
+        </Pie>
+        <Tooltip />
+      </PieChart>
+    </ResponsiveContainer>
   );
 }

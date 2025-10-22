@@ -4,8 +4,8 @@ import Divider from "@mui/material/Divider";
 
 function App() {
   return (
-    <div className="bg-[#0f1729] text-white box-border">
-      <div className="flex h-screen overflow-hidden">
+    <div className="min-h-screen w-full bg-gray-900 text-white">
+      <div className="flex w-full min-h-screen ">
         <SideBar />
         <Divider
           orientation="vertical"

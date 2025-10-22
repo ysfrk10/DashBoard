@@ -1,0 +1,39 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "User": "Youssef",
+      "Action": "Purchase",
+      "Amount": 250.75,
+      "Status": "Completed"
+    },
+    {
+      "id": 2,
+      "User": "Sara",
+      "Action": "Withdrawal",
+      "Amount": 100.0,
+      "Status": "Pending"
+    },
+    {
+      "id": 3,
+      "User": "Omar",
+      "Action": "Deposit",
+      "Amount": 500.5,
+      "Status": "Completed"
+    },
+    {
+      "id": 4,
+      "User": "Nour",
+      "Action": "Refund",
+      "Amount": -75.0,
+      "Status": "Failed"
+    },
+    {
+      "id": 5,
+      "User": "Ali",
+      "Action": "Transfer",
+      "Amount": 320.2,
+      "Status": "Completed"
+    }
+  ]
+}
