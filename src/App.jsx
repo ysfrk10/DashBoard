@@ -4,7 +4,7 @@ import Divider from "@mui/material/Divider";
 
 function App() {
   return (
-    <div className="bg-[#0f1729] text-white">
+    <div className="bg-[#0f1729] text-white box-border">
       <div className="flex h-screen overflow-hidden">
         <SideBar />
         <Divider
@@ -15,7 +15,6 @@ function App() {
             height: "100%",
             width: "0.5px",
             marginX: 1,
-            // مسافة بسيطة حوله
           }}
         />
         <Header />
