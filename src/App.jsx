@@ -14,7 +14,7 @@ function App() {
             backgroundColor: "#313259",
             height: "100%",
             width: "0.5px",
-            marginX: 1,
+            marginX: 2,
           }}
         />
         <Header />

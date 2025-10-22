@@ -32,13 +32,13 @@ export default function SideBar() {
         sx={{
           backgroundColor: "#313259",
           height: "0.5px",
-          width: "100%",
-          marginX: 1,
+          width: "120%",
+          marginY: "13.4px",
         }}
       />
       {/* nav links */}
       <div className="m-2">
-        <p className="text-[#99b7bd] text-[10px] pl-1">Navigation</p>
+        <p className="text-[#99b7bd] text-[15px] pl-1 py-3">Navigation</p>
         <div>
           <div
             className=" flex items-center gap-1 pl-1
@@ -46,65 +46,65 @@ export default function SideBar() {
           >
             <SpaceDashboardIcon
               sx={{
-                fontSize: "15px",
+                fontSize: "30px",
               }}
             />{" "}
-            <p className=" text-[10px] my-1">DashBoard</p>
+            <p className=" text-[15px] my-1">DashBoard</p>
           </div>
           <div
-            className="flex items-center gap-1 pl-1
+            className="flex items-center gap-1 p-1 
            hover:bg-[#1f2a3d] hover:rounded-md hover:transition duration-300"
           >
             <EqualizerRoundedIcon
               sx={{
-                fontSize: "15px",
+                fontSize: "30px",
               }}
             />{" "}
-            <p className=" text-[10px] my-1">Analytics</p>
+            <p className=" text-[15px] my-1">Analytics</p>
           </div>
           <div
-            className="flex items-center gap-1 pl-1
+            className="flex items-center gap-1 p-1
            hover:bg-[#1f2a3d] hover:rounded-md hover:transition duration-300"
           >
             <SummarizeOutlinedIcon
               sx={{
-                fontSize: "15px",
+                fontSize: "30px",
               }}
             />{" "}
-            <p className=" text-[10px] my-1">Reports</p>
+            <p className=" text-[15px] my-1">Reports</p>
           </div>
           <div
-            className="flex items-center gap-1 pl-1
+            className="flex items-center gap-1 p-1
            hover:bg-[#1f2a3d] hover:rounded-md hover:transition duration-300"
           >
             <PeopleOutlineOutlinedIcon
               sx={{
-                fontSize: "15px",
+                fontSize: "30px",
               }}
             />{" "}
-            <p className=" text-[10px] my-1">users</p>
+            <p className=" text-[15px] my-1">users</p>
           </div>
           <div
-            className="flex items-center gap-1 pl-1
+            className="flex items-center gap-1 p-1
            hover:bg-[#1f2a3d] hover:rounded-md hover:transition duration-300"
           >
             <TrendingUpOutlinedIcon
               sx={{
-                fontSize: "15px",
+                fontSize: "30px",
               }}
             />{" "}
-            <p className=" text-[10px] my-1">Trends</p>
+            <p className=" text-[15px] my-1">Trends</p>
           </div>
           <div
-            className="flex items-center gap-1 pl-1
+            className="flex items-center gap-1 p-1
            hover:bg-[#1f2a3d] hover:rounded-md hover:transition duration-300"
           >
             <SettingsOutlinedIcon
               sx={{
-                fontSize: "15px",
+                fontSize: "30px",
               }}
             />{" "}
-            <p className=" text-[10px] my-1">Settings</p>
+            <p className=" text-[15px] my-1">Settings</p>
           </div>
         </div>
       </div>
