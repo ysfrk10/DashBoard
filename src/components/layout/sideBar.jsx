@@ -1,6 +1,7 @@
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import Divider from "@mui/material/Divider";
-
+import { useContext } from "react";
+import { HomeContext } from "/src/contexts/homeContext.jsx";
 // icons
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import EqualizerRoundedIcon from "@mui/icons-material/EqualizerRounded";
@@ -9,8 +10,9 @@ import PeopleOutlineOutlinedIcon from "@mui/icons-material/PeopleOutlineOutlined
 import TrendingUpOutlinedIcon from "@mui/icons-material/TrendingUpOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 export default function SideBar() {
+  const { Home, showHome } = useContext(HomeContext);
   return (
-    <div className="fixed h-full">
+    <div className="">
       {/* logo */}
       <div className="flex my-4 gap-1 items-center pr-10 pl-4 py-2 ">
         {/* logo icon */}
@@ -41,17 +43,23 @@ export default function SideBar() {
       <div className="m-2">
         <p className="text-[#99b7bd] text-[15px] pl-1 py-3">Navigation</p>
         <div>
+          {/* start dashBoard Link */}
           <div
-            className=" flex items-center gap-1 pl-1
+            onClick={() => {
+              showHome(true);
+            }}
+            className=" flex items-center gap-1 pl-1 
              hover:bg-[#1f2a3d] hover:rounded-md hover:transition duration-300"
           >
             <SpaceDashboardIcon
               sx={{
                 fontSize: "30px",
               }}
-            />{" "}
+            />
             <p className=" text-[15px] my-1">DashBoard</p>
           </div>
+          {/* end dashBoard Link */}
+
           <div
             className="flex items-center gap-1 p-1 
            hover:bg-[#1f2a3d] hover:rounded-md hover:transition duration-300"
@@ -97,6 +105,9 @@ export default function SideBar() {
             <p className=" text-[15px] my-1">Trends</p>
           </div>
           <div
+            onClick={() => {
+              showHome(false);
+            }}
             className="flex items-center gap-1 p-1
            hover:bg-[#1f2a3d] hover:rounded-md hover:transition duration-300"
           >
