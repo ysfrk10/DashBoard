@@ -1,11 +1,14 @@
 import SideBar from "./components/layout/sideBar";
 import Header from "./components/layout/Header";
 import Divider from "@mui/material/Divider";
-
+import "./App.css";
 function App() {
   return (
-    <div className="min-h-screen w-full bg-gray-900 text-white">
-      <div className="flex w-full min-h-screen ">
+    <div
+      className="   w-full h-screen 
+      text-white flex mb-4"
+    >
+      <div className="fixed h-full ">
         <SideBar />
         <Divider
           orientation="vertical"
@@ -14,11 +17,11 @@ function App() {
             backgroundColor: "#313259",
             height: "100%",
             width: "0.5px",
-            marginX: 2,
+            marginLeft: "250px",
           }}
         />
-        <Header />
       </div>
+      <Header />
     </div>
   );
 }

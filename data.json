@@ -5,35 +5,40 @@
       "User": "Youssef",
       "Action": "Purchase",
       "Amount": 250.75,
-      "Status": "Completed"
+      "Status": "Completed",
+      "Time": "2 minutes ago"
     },
     {
       "id": 2,
       "User": "Sara",
       "Action": "Withdrawal",
       "Amount": 100.0,
-      "Status": "Pending"
+      "Status": "Pending",
+      "Time": "5 minutes ago"
     },
     {
       "id": 3,
       "User": "Omar",
       "Action": "Deposit",
       "Amount": 500.5,
-      "Status": "Completed"
+      "Status": "Completed",
+      "Time": "10 minutes ago"
     },
     {
       "id": 4,
       "User": "Nour",
       "Action": "Refund",
       "Amount": -75.0,
-      "Status": "Failed"
+      "Status": "Failed",
+      "Time": "15 minutes ago"
     },
     {
       "id": 5,
       "User": "Ali",
       "Action": "Transfer",
       "Amount": 320.2,
-      "Status": "Completed"
+      "Status": "Completed",
+      "Time": "20 minutes ago"
     }
   ]
 }

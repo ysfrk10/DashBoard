@@ -10,7 +10,7 @@ import TrendingUpOutlinedIcon from "@mui/icons-material/TrendingUpOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 export default function SideBar() {
   return (
-    <div>
+    <div className="fixed h-full">
       {/* logo */}
       <div className="flex my-4 gap-1 items-center pr-10 pl-4 py-2 ">
         {/* logo icon */}
