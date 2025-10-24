@@ -2,6 +2,8 @@ import SideBar from "./components/layout/sideBar";
 import Header from "./components/layout/Header";
 import { useContext } from "react";
 import { LanguageContext } from "./contexts/languageContext";
+import { ShowSideBarProvider } from "./contexts/sideBarShowContext";
+
 import "./App.css";
 function App() {
   const { language } = useContext(LanguageContext);

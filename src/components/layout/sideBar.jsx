@@ -2,6 +2,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import Divider from "@mui/material/Divider";
 import { useContext } from "react";
 import { HomeContext } from "/src/contexts/homeContext.jsx";
+import { ShowSideBarContext } from "../../contexts/sideBarShowContext";
 import { useLanguage } from "../../hooks/useLanguage";
 // icons
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
@@ -13,10 +14,18 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 export default function SideBar() {
   const { t } = useLanguage();
   const { Home, showHome } = useContext(HomeContext);
+  const { showSideBar } = useContext(ShowSideBarContext);
+
   return (
     <div className="">
       {/* logo */}
-      <div className="flex my-4 gap-1 items-center pr-10 pl-4 py-2 ">
+      <div
+        onClick={() => {
+          showHome(true);
+        }}
+        className="flex my-4 gap-1 items-center pr-2 pl-2 py-3
+        cursor-pointer "
+      >
         {/* logo icon */}
         <div>
           <DashboardIcon
@@ -29,18 +38,23 @@ export default function SideBar() {
           />
         </div>
         {/* logo text */}
-        <div className="pl-2 font-bold text-xl"> {t("DashBoard")}</div>
+        {showSideBar ? (
+          <div className="px-2 font-bold text-xl "> {t("DashBoard")}</div>
+        ) : null}
       </div>
-      <Divider
-        orientation="horizontal"
-        flexItem
-        sx={{
-          backgroundColor: "#313259",
-          height: "0.5px",
-          width: "120%",
-          marginY: "13.4px",
-        }}
-      />
+      {showSideBar ? (
+        <Divider
+          orientation="horizontal"
+          flexItem
+          sx={{
+            backgroundColor: "#313259",
+            height: "0.5px",
+            width: "120%",
+            marginY: "13.4px",
+          }}
+        />
+      ) : null}
+
       {/* nav links */}
       <div className="m-2">
         <p className="text-[#99b7bd] text-[15px] pl-1 py-3">
@@ -60,7 +74,9 @@ export default function SideBar() {
                 fontSize: "30px",
               }}
             />
-            <p className=" text-[15px] my-1">{t("DashBoard")}</p>
+            {showSideBar ? (
+              <p className=" text-[15px] my-1">{t("DashBoard")}</p>
+            ) : null}
           </div>
           {/* end dashBoard Link */}
 
@@ -72,8 +88,12 @@ export default function SideBar() {
               sx={{
                 fontSize: "30px",
               }}
-            />{" "}
-            <p className=" text-[15px] my-1">{t("Analytics")}</p>
+            />
+            {showSideBar ? (
+              <p className=" text-[15px] my-1">{t("Analytics")}</p>
+            ) : (
+              <p></p>
+            )}
           </div>
           <div
             className="flex items-center gap-1 p-1
@@ -83,8 +103,12 @@ export default function SideBar() {
               sx={{
                 fontSize: "30px",
               }}
-            />{" "}
-            <p className=" text-[15px] my-1">{t("Reports")}</p>
+            />
+            {showSideBar ? (
+              <p className=" text-[15px] my-1">{t("Reports")}</p>
+            ) : (
+              <p></p>
+            )}
           </div>
           <div
             className="flex items-center gap-1 p-1
@@ -94,8 +118,14 @@ export default function SideBar() {
               sx={{
                 fontSize: "30px",
               }}
-            />{" "}
-            <p className=" text-[15px] my-1">{t("users")}</p>
+            />
+            {showSideBar ? (
+              <p className="transition duration-300 text-[15px] my-1">
+                {t("users")}
+              </p>
+            ) : (
+              <p></p>
+            )}
           </div>
           <div
             className="flex items-center gap-1 p-1
@@ -105,8 +135,10 @@ export default function SideBar() {
               sx={{
                 fontSize: "30px",
               }}
-            />{" "}
-            <p className=" text-[15px] my-1">{t("Trends")}</p>
+            />
+            {showSideBar ? (
+              <p className=" text-[15px] my-1">{t("Trends")}</p>
+            ) : null}
           </div>
           <div
             onClick={() => {
@@ -120,7 +152,9 @@ export default function SideBar() {
                 fontSize: "30px",
               }}
             />
-            <p className=" text-[15px] my-1">{t("settings")}</p>
+            {showSideBar ? (
+              <p className=" text-[15px] my-1">{t("settings")}</p>
+            ) : null}
           </div>
         </div>
       </div>

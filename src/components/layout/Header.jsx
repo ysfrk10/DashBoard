@@ -1,8 +1,5 @@
-import { LanguageContext } from "../../contexts/languageContext";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { useLanguage } from "../../hooks/useLanguage";
-
-import Divider from "@mui/material/Divider";
 
 // icons
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
@@ -11,12 +8,17 @@ import IconButton from "@mui/material/IconButton";
 import PersonIcon from "@mui/icons-material/Person";
 // component
 import SearchField from "../HeaderComponents/SearchField";
-import { UserSettings } from "../HeaderComponents/UserSettings";
 import HomeLayOut from "../HeaderComponents/HomeLayOut";
+import UserSettings from "../HeaderComponents/UserSettings";
+import { ShowSideBarContext } from "../../contexts/sideBarShowContext";
 export default function Header() {
-  const { language } = useLanguage();
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
+  const { language } = useLanguage();
+  const { showSideBar, setShowSideBar } = useContext(ShowSideBarContext);
+
+  function HomeClassNameHandler() {}
+
   // يقفل لما تدوس برا المينيو
   useEffect(() => {
     function handleClickOutside(e) {
@@ -30,9 +32,13 @@ export default function Header() {
   return (
     <div
       className={
-        language === "en"
-          ? " flex flex-col ml-[270px] "
-          : " flex flex-col mr-[270px] "
+        showSideBar
+          ? language === "en"
+            ? "transition-[margin] duration-300 flex flex-col ml-[270px] mt-4 "
+            : "transition-[margin] duration-300 flex flex-col mr-[270px] mt-4"
+          : language === "en"
+          ? "transition-[margin] duration-300 flex flex-col ml-[60px] mt-4 "
+          : "transition-[margin] duration-300 flex flex-col mr-[60px] mt-4"
       }
     >
       <div
@@ -41,6 +47,10 @@ export default function Header() {
       >
         <div className="flex items-center gap-10 ">
           <WebRoundedIcon
+            onClick={() => {
+              setShowSideBar(!showSideBar);
+              console.log(showSideBar);
+            }}
             sx={{
               borderRadius: "10px",
               fontSize: "40px",
@@ -56,7 +66,7 @@ export default function Header() {
               sx={{
                 borderRadius: "10px",
                 fontSize: "35px",
-                padding: "8px",
+                paddingY: "8px",
                 transition: "0.3s",
                 cursor: "pointer",
               }}
