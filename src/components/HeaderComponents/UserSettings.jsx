@@ -9,6 +9,7 @@ export function UserSettings() {
     flex flex-col gap-2 bg-[#101829]"
     >
       <h3>{t("myaccount")}</h3>
+
       <Divider
         orientation="horizontal"
         flexItem
@@ -33,7 +34,6 @@ export function UserSettings() {
           {t("billing")}
         </a>
       </div>
-
       <Divider
         orientation="horizontal"
         flexItem

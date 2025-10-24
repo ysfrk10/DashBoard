@@ -1,6 +1,9 @@
 import { LanguageContext } from "../../contexts/languageContext";
-import { useState, useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLanguage } from "../../hooks/useLanguage";
+
+import Divider from "@mui/material/Divider";
+
 // icons
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import WebRoundedIcon from "@mui/icons-material/WebRounded";
@@ -11,7 +14,7 @@ import SearchField from "../HeaderComponents/SearchField";
 import { UserSettings } from "../HeaderComponents/UserSettings";
 import HomeLayOut from "../HeaderComponents/HomeLayOut";
 export default function Header() {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
   // يقفل لما تدوس برا المينيو

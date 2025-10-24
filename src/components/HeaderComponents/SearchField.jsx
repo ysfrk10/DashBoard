@@ -2,7 +2,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useLanguage } from "../../hooks/useLanguage";
 export default function SearchField() {
   const { t } = useLanguage();
-
   return (
     <div className=" flex">
       <form className="relative  ">
