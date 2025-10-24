@@ -1,25 +1,19 @@
 import SideBar from "./components/layout/sideBar";
 import Header from "./components/layout/Header";
-import Divider from "@mui/material/Divider";
+import { useContext } from "react";
+import { LanguageContext } from "./contexts/languageContext";
 import "./App.css";
 function App() {
+  const { language } = useContext(LanguageContext);
+
   return (
     <div
+      dir={language === "en" ? "ltr" : "rtl"}
       className="   w-full h-screen 
       text-white flex mb-4"
     >
       <div className="fixed h-full ">
         <SideBar />
-        <Divider
-          orientation="vertical"
-          flexItem
-          sx={{
-            backgroundColor: "#313259",
-            height: "100%",
-            width: "0.5px",
-            marginLeft: "250px",
-          }}
-        />
       </div>
       <Header />
     </div>
