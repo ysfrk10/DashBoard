@@ -1,1 +1,70 @@
 @import "tailwindcss";
+@custom-variant dark (&:is(.dark)*) {
+}
+
+@utility bg-primary {
+  background-color: var(--color-primary);
+}
+@utility text-main {
+  color: var(--color-text-main);
+}
+@utility bg-secondary {
+  background-color: var(--color-secondary);
+}
+@utility bg-search {
+  background-color: var(--color-search);
+}
+@utility text-accent {
+  color: var(--color-accent);
+}
+/* dark */
+@utility bg-primary-dark {
+  background-color: var(--color-primary-dark);
+}
+@utility color-text-main-dark {
+  color: var(--color-text-main-dark);
+}
+@utility bg-search-dark {
+  background: var(--color-search-dark);
+}
+@utility bg-secondary-dark {
+  background-color: var(--color-secondary-dark);
+}
+@utility text-accent-dark {
+  color: var(--color-accent-dark);
+}
+
+* {
+  --color-primary: #111827;
+  --color-secondary: #212d40;
+  --color-accent: #755fe3;
+  --color-search: #212e42;
+  --color-text-main: #f9fafb;
+  --color-text-subtle: #d1d5db;
+  /* light */
+  --color-primary-dark: #f5f5f5;
+  --color-secondary-dark: #111827;
+  --color-search-dark: #9fa8da;
+  --color-accent-dark: #755fe3;
+  --color-text-main-dark: #1f2937;
+  --color-text-subtle-dark: #4b5563;
+}
+body {
+  background-color: var(--color-primary);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s;
+}
+body ::selection {
+  background-color: var(--color-accent);
+  color: var(--color-text-main);
+}
+.dark ::selection {
+  background-color: var(--color-accent-dark);
+  color: var(--color-text-main-dark);
+}
+.dark {
+  background-color: var(--color-primary-dark);
+  color: #1f2937;
+}

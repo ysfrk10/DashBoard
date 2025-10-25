@@ -2,15 +2,18 @@ import Divider from "@mui/material/Divider";
 import { useLanguage } from "../../hooks/useLanguage";
 import { useContext } from "react";
 import { HomeContext } from "../../contexts/homeContext";
+import { useTheme } from "../../contexts/themeContext";
 export default function UserSettings() {
   const { t } = useLanguage();
   const { Home, showHome } = useContext(HomeContext);
-
+  const { theme } = useTheme();
   return (
     <div
-      className="absolute top-12 right-0 z-20 border-[#7a5de3] 
-    border rounded-md p-2 w-[200px] transition duration-300
-    flex flex-col gap-2 bg-[#101829]"
+      className={
+        theme
+          ? "flex flex-col gap-2 absolute top-12 right-0 z-20 border rounded-md p-2 w-[200px] bg-[#eeeeee] text-[black]  border-[#7a5de3] transition[color] duration-300   "
+          : "flex flex-col gap-2 absolute top-12 right-0 z-20 border rounded-md p-2 w-[200px] bg-search border-[#7a5de3] transition[color] duration-300  "
+      }
     >
       <h3>{t("myaccount")}</h3>
 

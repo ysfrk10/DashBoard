@@ -1,5 +1,4 @@
 import axios from "axios";
-import { LanguageContext } from "../../contexts/languageContext";
 import { HomeContext } from "/src/contexts/homeContext.jsx";
 import { useState, useEffect, useContext } from "react";
 import { useLanguage } from "../../hooks/useLanguage";
@@ -9,10 +8,12 @@ import SsidChartRoundedIcon from "@mui/icons-material/SsidChartRounded";
 import WebAssetOutlinedIcon from "@mui/icons-material/WebAssetOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import Switch from "@mui/material/Switch";
-
+import { useTheme } from "../../contexts/themeContext";
+import "../../../src/index.css";
 export default function HomeLayOut() {
   const { t } = useLanguage();
   const { Home } = useContext(HomeContext);
+  const { theme } = useTheme();
   const [transactions, setTransactions] = useState([]);
   useEffect(() => {
     axios
@@ -27,7 +28,7 @@ export default function HomeLayOut() {
             <td className="text-center  px-4 py-3 border-b-[#313259] border-b border-solid">
               {element.User}
             </td>
-            <td className="text-center px-4 py-3 border-b-[#313259] border-b border-solid">
+            <td className="text-center px-4 py-3 border-[#313259] border-b border-solid">
               {element.Action}
             </td>
             <td className=" px-4 py-3 border-b-[#313259] border-b border-solid">
@@ -45,10 +46,16 @@ export default function HomeLayOut() {
               <div
                 className={
                   element.Status === "Completed"
-                    ? "bg-green-500 px-2  w-fit rounded-full "
+                    ? `bg-green-500 px-2  w-fit rounded-full ${
+                        theme ? "text-main" : "text-main-dark"
+                      }`
                     : element.Status === "Failed"
-                    ? "bg-red-600 px-2  w-fit rounded-full "
-                    : "bg-[#35335e] px-2  w-fit rounded-full "
+                    ? `bg-red-600 px-2  w-fit rounded-full ${
+                        theme ? "text-main" : "text-main-dark"
+                      }`
+                    : `bg-[#35335e] px-2  w-fit rounded-full ${
+                        theme ? "text-main" : "text-main-dark"
+                      }`
                 }
               >
                 {element.Status}
@@ -66,76 +73,156 @@ export default function HomeLayOut() {
     return (
       <div>
         <div className="my-8 mx-2 mt-[100px]">
-          <h1 className="text-2xl font-bold">{t("DashBoard")}</h1>
-          <p className="text-sm text-[#94a3b3]">{t("welcome")}</p>
+          <h1
+            className={
+              theme
+                ? "text-2xl font-bold text-main-dark transition[color] duration-300  "
+                : "text-2xl font-bold  transition[color] duration-300  "
+            }
+          >
+            {t("DashBoard")}
+          </h1>
+          <p
+            className={
+              theme
+                ? "text-sm text-main-dark transition[color] duration-300  "
+                : "text-sm text-[#94a3b3] transition[color] duration-300  "
+            }
+          >
+            {t("welcome")}
+          </p>
         </div>
-        <div className="flex gap-8">
+        <div className="flex gap-8 mx-4">
           {/* 1st card */}
           <div
-            className="bg-[#212e42] flex w-[250px] p-4 rounded-lg mr-5
-         ml-4 transition duration-300 ease-in-out hover:scale-105 hover:shadow-[0_4px_25px_0_rgba(137,83,224,0.2)]"
+            className={` flex w-[250px] p-4 rounded-lg
+         ml-4 transition duration-300 ease-in-out hover:scale-105 ${
+           theme
+             ? "border border-[#212e42]/60 hover:shadow-[0_4px_25px_0_rgba(0,0,0,0.5)]"
+             : " bg-[#212e42]/60 hover:shadow-[0_4px_25px_0_rgba(117,95,227,0.2)]"
+         }`}
           >
             <div>
-              <p className="text-sm text-[#94a3b8] mb-3">{t("TotalRevenue")}</p>
+              <p
+                className={`text-sm  mb-3
+                 ${theme ? "" : "text-[#94a3b8]"}`}
+              >
+                {t("TotalRevenue")}
+              </p>
               <h1 className="text-2xl font-bold">$45,231</h1>
               <p className="text-sm text-[#22ba52] ">+20.1% from last month</p>
             </div>
-            <div className="ml-auto text-[#8852de] bg-[#2b304f] w-7 h-7 rounded-lg flex items-center justify-center">
+            <div
+              className={`ml-auto text-[#8852de] ${
+                theme ? "bg-[#ebe4f7]" : ""
+              } bg-[#2b304f] w-7 h-7 rounded-lg flex items-center justify-center`}
+            >
               $
             </div>
           </div>
           {/* 2nd  card */}
           <div
-            className="bg-[#212e42] flex w-[250px] p-4 rounded-lg
-         ml-4 transition duration-300 ease-in-out hover:scale-105 hover:shadow-[0_4px_25px_0_rgba(137,83,224,0.2)]"
+            className={` flex w-[250px] p-4 rounded-lg
+         ml-4 transition duration-300 ease-in-out hover:scale-105 ${
+           theme
+             ? "border border-[#212e42]/60 hover:shadow-[0_4px_25px_0_rgba(0,0,0,0.5)]"
+             : " bg-[#212e42]/60 hover:shadow-[0_4px_25px_0_rgba(117,95,227,0.2)]"
+         }`}
           >
             <div>
-              <p className="text-sm text-[#94a3b8] mb-3">{t("ActiveUsers")}</p>
+              <p
+                className={`text-sm  mb-3
+                 ${theme ? "" : "text-[#94a3b8]"}`}
+              >
+                {t("ActiveUsers")}
+              </p>
               <h1 className="text-2xl font-bold">2,350</h1>
               <p className="text-sm text-[#22ba52] ">+15.3% from last month</p>
             </div>
-            <div className="ml-auto text-[#8852de] bg-[#2b304f] w-7 h-7 rounded-lg flex items-center justify-center">
+            <div
+              className={`ml-auto text-[#8852de] ${
+                theme ? "bg-[#ebe4f7]" : ""
+              } bg-[#2b304f] w-7 h-7 rounded-lg flex items-center justify-center`}
+            >
               <PeopleAltOutlinedIcon sx={{ fontSize: "15px" }} />
             </div>
           </div>
           {/* 3rd  card */}
           <div
-            className="bg-[#212e42] flex w-[250px] p-4 rounded-lg
-         ml-4 transition duration-300 ease-in-out hover:scale-105 hover:shadow-[0_4px_25px_0_rgba(137,83,224,0.2)]"
+            className={` flex w-[250px] p-4 rounded-lg
+         ml-4 transition duration-300 ease-in-out hover:scale-105 ${
+           theme
+             ? "border border-[#212e42]/60 hover:shadow-[0_4px_25px_0_rgba(0,0,0,0.5)]"
+             : " bg-[#212e42]/60 hover:shadow-[0_4px_25px_0_rgba(117,95,227,0.2)]"
+         }`}
           >
             <div>
-              <p className="text-sm text-[#94a3b8] mb-3">{t("Transactions")}</p>
+              <p
+                className={`text-sm  mb-3
+                 ${theme ? "" : "text-[#94a3b8]"}`}
+              >
+                {t("Transactions")}
+              </p>
               <h1 className="text-2xl font-bold">12,234</h1>
               <p className="text-sm text-[#22ba52] ">+8.2% from last month</p>
             </div>
-            <div className="ml-auto text-[#8852de] bg-[#2b304f] w-7 h-7 rounded-lg flex items-center justify-center">
+            <div
+              className={`ml-auto text-[#8852de] ${
+                theme ? "bg-[#ebe4f7]" : ""
+              } bg-[#2b304f] w-7 h-7 rounded-lg flex items-center justify-center`}
+            >
               <WebAssetOutlinedIcon sx={{ fontSize: "15px" }} />
             </div>
           </div>
           {/* 4th  card */}
           <div
-            className="bg-[#212e42] flex w-[250px] p-4 rounded-lg
-         ml-4 transition duration-300 ease-in-out hover:scale-105 hover:shadow-[0_4px_25px_0_rgba(137,83,224,0.2)]"
+            className={`  flex w-[250px] p-4 rounded-lg
+         ml-4 transition duration-300 ease-in-out hover:scale-105 ${
+           theme
+             ? "border border-[#212e42]/60 hover:shadow-[0_4px_25px_0_rgba(0,0,0,0.5)]"
+             : " bg-[#212e42]/60 hover:shadow-[0_4px_25px_0_rgba(117,95,227,0.2)]"
+         }`}
           >
             <div>
-              <p className="text-sm text-[#94a3b8] mb-3">
+              <p
+                className={`text-sm  mb-3
+                 ${theme ? "" : "text-[#94a3b8]"}`}
+              >
                 {t("ConversionRate")}
               </p>
               <h1 className="text-2xl font-bold">3.2%</h1>
               <p className="text-sm text-[#f04141] ">-2.4% from last month</p>
             </div>
-            <div className="ml-auto text-[#8852de] bg-[#2b304f] w-7 h-7 rounded-lg flex items-center justify-center">
+            <div
+              className={`ml-auto text-[#8852de] ${
+                theme ? "bg-[#ebe4f7]" : ""
+              } bg-[#2b304f] w-7 h-7 rounded-lg flex items-center justify-center`}
+            >
               <SsidChartRoundedIcon sx={{ fontSize: "15px" }} />
             </div>
           </div>
         </div>
         <div className="flex gap-3">
-          <div className="w-[60%] bg-[#212d40] mt-4 mx-4 rounded-xl">
+          <div
+            className={`w-[60%]  mt-4 mx-4 rounded-xl ${
+              theme
+                ? "border border-[#212e42]/60  text-[#212d40]"
+                : "bg-[#212d40]"
+            }`}
+          >
             <h1 className="text-2xl font-bold p-4">{t("RevenueOverview")}</h1>
-            <p className="text-sm px-4 text-[#94a3b8] ">{t("monthly")}</p>
+            <p className={`text-sm px-4 ${theme ? "" : "text-[#94a3b8]"}  `}>
+              {t("monthly")}
+            </p>
             <StatusPieChart />
           </div>
-          <div className="w-[50%] bg-[#212d40] mt-4 mx-4 rounded-xl">
+          <div
+            className={`w-[50%]  mt-4 mx-4 rounded-xl ${
+              theme
+                ? "border border-[#212e42]/60  text-[#212d40]"
+                : "bg-[#212d40]"
+            }`}
+          >
             <div>
               <h1 className="text-4xl font-bold px-10 py-7 ">
                 {t("QuickStats")}
@@ -145,43 +232,47 @@ export default function HomeLayOut() {
               </p>
             </div>
             <div
-              className="flex justify-between bg-[#212e42] px-10 py-4
-          rounded-md items-end"
+              className={`flex justify-between mx-2 my-4 px-10 py-3
+          rounded-md items-end ${theme ? "bg-[#eeeeee]" : ""}  `}
             >
               <h2 className="font text-xl">{t("Avg")}</h2>
               <p className="font-bold text-2xl text-[#8953e0]">$127.50</p>
             </div>
             <div
-              className="flex justify-between bg-[#212e42] px-10 py-4
-          rounded-md items-end"
+              className={`flex justify-between mx-2 my-4 px-10 py-3
+          rounded-md items-end ${theme ? "bg-[#eeeeee]" : ""}  `}
             >
               <h2 className="font text-xl">{t("Customer")}</h2>
               <p className="font-bold text-2xl text-[#8953e0]">$1,248</p>
             </div>
             <div
-              className="flex justify-between bg-[#212e42] px-10 py-4
-          rounded-md items-end"
+              className={`flex justify-between mx-2 my-4 px-10 py-3
+          rounded-md items-end ${theme ? "bg-[#eeeeee]" : ""}  `}
             >
               <h2 className="font text-xl">{t("Churn")}</h2>
               <p className="font-bold text-2xl text-[#8953e0]">2.3%</p>
             </div>
             <div
-              className="flex justify-between bg-[#212e42] px-10 py-4
-          rounded-md items-end"
+              className={`flex justify-between mx-2 my-4 px-10 py-3
+          rounded-md items-end ${theme ? "bg-[#eeeeee]" : ""}  `}
             >
               <h2 className="font text-xl"> {t("MRR")}</h2>
               <p className="font-bold text-2xl text-[#8953e0]">$24,891</p>
             </div>
           </div>
         </div>
-        <div className="bg-[#212e42] m-4 rounded-lg pb-10 ">
+        <div
+          className={`m-4 rounded-lg pb-10 ${
+            theme ? "border border-[#212e42]/60" : "bg-[#212d40]"
+          } `}
+        >
           <div>
             <h1 className="text-2xl font-bold px-4 py-4">{t("Activity")}</h1>
             <p className="text-sm px-4 pb-4 text-[#94a3b8] ">
               {t("useractions")}
             </p>
           </div>
-          <table className=" w-full text-[white] text-left border-collapse m ">
+          <table className=" w-full  text-left border-collapse m ">
             <thead>
               <tr>
                 <th className="text-center text-[#94a3b3] px-4 py-3 border-b-[#313259] border-b border-solid">
@@ -234,25 +325,31 @@ function StatusPieChart() {
 
 function SettingScreen() {
   const { language, changeLanguage, t } = useLanguage();
-
+  const { theme } = useTheme();
   return (
-    <div className="w-[50vw]">
+    <div className="w-[50vw] ">
       <div
-        className="flex justify-between w-full h-fit
-        items-center bg-[#212e42] mt-30 mx-5 rounded-lg py-5 px-5"
+        className={`flex justify-between w-full h-fit
+        items-center ${
+          theme ? "bg-[#eeeeee] border border-[#212e42]/60 " : ""
+        } bg-[#212e42]/60  mt-30 mx-5 rounded-lg py-5 px-5`}
       >
         <h1 className="text-2xl "> {t("Theme")} </h1>
         <ColorSwitches />
       </div>
       <div
-        className="flex justify-between w-full h-fit
-        items-center bg-[#212e42] mt-10 mx-5 rounded-lg py-5 px-5"
+        className={`flex justify-between w-full h-fit
+        items-center ${
+          theme ? "bg-[#eeeeee] border border-[#212e42]/60 " : ""
+        } bg-[#212e42]/60  mt-30 mx-5 rounded-lg py-5 px-5`}
       >
         <h1 className="text-2xl "> {t("Language")} </h1>
         <button
           onClick={() => changeLanguage(language === "en" ? "ar" : "en")}
-          className="transition duration-300 hover:bg-[#1d518a]/50
-        py-3 px-6 bg-[#1d518a] rounded-xl cursor-pointer"
+          className={`transition duration-300 
+        py-3 px-6  rounded-xl cursor-pointer hover:bg-[#1d518a]/50
+            ${theme ? "bg-[#7459eb] text-white " : "bg-[#1d518a]  "} `}
+          // xcascasc
         >
           {language === "en" ? "العربية" : "English"}
         </button>
@@ -262,12 +359,17 @@ function SettingScreen() {
 }
 
 function ColorSwitches() {
+  const { theme, SetTheme } = useTheme();
   const label = { inputProps: { "aria-label": "Color switch demo" } };
-
   return (
     <div>
-      <Switch {...label} />
-      {/* checked= onChange= */}
+      <Switch
+        {...label}
+        onChange={() => {
+          SetTheme((prevMode) => !prevMode);
+          console.log(theme);
+        }}
+      />
     </div>
   );
 }

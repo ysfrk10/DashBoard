@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { HomeContext } from "/src/contexts/homeContext.jsx";
 import { ShowSideBarContext } from "../../contexts/sideBarShowContext";
 import { useLanguage } from "../../hooks/useLanguage";
+import { useTheme } from "../../contexts/themeContext";
 // icons
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import EqualizerRoundedIcon from "@mui/icons-material/EqualizerRounded";
@@ -15,9 +16,16 @@ export default function SideBar() {
   const { t } = useLanguage();
   const { Home, showHome } = useContext(HomeContext);
   const { showSideBar } = useContext(ShowSideBarContext);
+  const { theme } = useTheme();
 
   return (
-    <div className="">
+    <div
+      className={
+        theme
+          ? "text-main-dark  h-full  transition[color] duration-300"
+          : "text-main transition[color] duration-300"
+      }
+    >
       {/* logo */}
       <div
         onClick={() => {
@@ -34,6 +42,7 @@ export default function SideBar() {
               borderRadius: "20px",
               padding: "8px",
               fontSize: "35px",
+              color: "#fff",
             }}
           />
         </div>
@@ -49,7 +58,7 @@ export default function SideBar() {
           sx={{
             backgroundColor: "#313259",
             height: "0.5px",
-            width: "120%",
+            width: "98%",
             marginY: "13.4px",
           }}
         />
@@ -57,9 +66,18 @@ export default function SideBar() {
 
       {/* nav links */}
       <div className="m-2">
-        <p className="text-[#99b7bd] text-[15px] pl-1 py-3">
-          {t("Navigation")}
-        </p>
+        {showSideBar ? (
+          <p
+            className={
+              theme
+                ? "text-main-dark text-[15px] pl-1 py-3"
+                : "text-main text-[15px] pl-1 py-3"
+            }
+          >
+            {t("Navigation")}
+          </p>
+        ) : null}
+
         <div>
           {/* start dashBoard Link */}
           <div
@@ -67,7 +85,7 @@ export default function SideBar() {
               showHome(true);
             }}
             className=" flex items-center gap-1 pl-1 
-             hover:bg-[#1f2a3d] hover:rounded-md hover:transition duration-300"
+             hover:bg-[#1f2a3d] hover:text-[white] hover:rounded-md hover:transition duration-300"
           >
             <SpaceDashboardIcon
               sx={{
@@ -82,7 +100,7 @@ export default function SideBar() {
 
           <div
             className="flex items-center gap-1 p-1 
-           hover:bg-[#1f2a3d] hover:rounded-md hover:transition duration-300"
+           hover:bg-[#1f2a3d] hover:text-[white] hover:rounded-md hover:transition duration-300"
           >
             <EqualizerRoundedIcon
               sx={{
@@ -97,7 +115,7 @@ export default function SideBar() {
           </div>
           <div
             className="flex items-center gap-1 p-1
-           hover:bg-[#1f2a3d] hover:rounded-md hover:transition duration-300"
+           hover:bg-[#1f2a3d] hover:text-[white] hover:rounded-md hover:transition duration-300"
           >
             <SummarizeOutlinedIcon
               sx={{
@@ -112,7 +130,7 @@ export default function SideBar() {
           </div>
           <div
             className="flex items-center gap-1 p-1
-           hover:bg-[#1f2a3d] hover:rounded-md hover:transition duration-300"
+           hover:bg-[#1f2a3d] hover:text-[white] hover:rounded-md hover:transition duration-300"
           >
             <PeopleOutlineOutlinedIcon
               sx={{
@@ -129,7 +147,7 @@ export default function SideBar() {
           </div>
           <div
             className="flex items-center gap-1 p-1
-           hover:bg-[#1f2a3d] hover:rounded-md hover:transition duration-300"
+           hover:bg-[#1f2a3d] hover:text-[white] hover:rounded-md hover:transition duration-300"
           >
             <TrendingUpOutlinedIcon
               sx={{
@@ -145,7 +163,7 @@ export default function SideBar() {
               showHome(false);
             }}
             className="flex items-center gap-1 p-1
-           hover:bg-[#1f2a3d] hover:rounded-md hover:transition duration-300"
+           hover:bg-[#1f2a3d] hover:text-[white] hover:rounded-md hover:transition duration-300"
           >
             <SettingsOutlinedIcon
               sx={{

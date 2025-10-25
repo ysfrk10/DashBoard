@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import { useLanguage } from "../../hooks/useLanguage";
-
+import { useTheme } from "../../contexts/themeContext";
 // icons
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import WebRoundedIcon from "@mui/icons-material/WebRounded";
@@ -16,7 +16,7 @@ export default function Header() {
   const menuRef = useRef(null);
   const { language } = useLanguage();
   const { showSideBar, setShowSideBar } = useContext(ShowSideBarContext);
-
+  const { theme } = useTheme();
   function HomeClassNameHandler() {}
 
   // يقفل لما تدوس برا المينيو
@@ -34,18 +34,21 @@ export default function Header() {
       className={
         showSideBar
           ? language === "en"
-            ? "transition-[margin] duration-300 flex flex-col ml-[270px] mt-4 "
-            : "transition-[margin] duration-300 flex flex-col mr-[270px] mt-4"
+            ? "transition-[margin] duration-300 flex flex-col ml-[270px] "
+            : "transition-[margin] duration-300 flex flex-col mr-[270px] "
           : language === "en"
-          ? "transition-[margin] duration-300 flex flex-col ml-[60px] mt-4 "
-          : "transition-[margin] duration-300 flex flex-col mr-[60px] mt-4"
+          ? "transition-[margin] duration-300 flex flex-col ml-[60px]  "
+          : "transition-[margin] duration-300 flex flex-col mr-[60px] "
       }
     >
       <div
-        className="h-[75px] rounded-sm  
-       w-full fixed z-20 backdrop-blur-sm bg-[#0f1729]/50 "
+        className={
+          theme
+            ? "h-[75px] w-full fixed z-20 backdrop-blur-sm rounded-sm text-main-dark  transition[color] duration-300  "
+            : "h-[75px]w-full fixed z-20 backdrop-blur-sm rounded-sm text-main transition[color] duration-300  "
+        }
       >
-        <div className="flex items-center gap-10 ">
+        <div className="flex items-center gap-10 m-4 ">
           <WebRoundedIcon
             onClick={() => {
               setShowSideBar(!showSideBar);
