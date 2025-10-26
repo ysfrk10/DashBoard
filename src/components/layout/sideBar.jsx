@@ -23,7 +23,7 @@ export default function SideBar() {
       className={
         theme
           ? `${
-              showSideBar ? "  w-fit md:w-[250px]" : " md:w-fit "
+              showSideBar ? "  w-fit md:w-[200px]" : " md:w-fit "
             }   bg-primary-dark text-main-dark md:h-full transition[color] duration-300`
           : `${
               showSideBar ? " w-fit md:w-[250px]" : " md:w-fit "

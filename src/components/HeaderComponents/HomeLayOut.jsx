@@ -23,8 +23,8 @@ export default function HomeLayOut() {
 
   if (Home) {
     return (
-      <div>
-        <div className=" my-8 md:mt-[100px] ">
+      <div className="md:mr-5  ">
+        <div className="my-8 md:mt-[100px] md:mx-4 ">
           <h1
             className={
               theme
@@ -44,7 +44,7 @@ export default function HomeLayOut() {
             {t("welcome")}
           </p>
         </div>
-        <div className="w-[340px] md:w-full flex items-center flex-col md:flex-row gap-3 md:gap-8 ">
+        <div className="w-[340px] md:w-full flex items-center  flex-col md:flex-row gap-3 md:gap-4 md:mr-4">
           {/* 1st card */}
           <div
             className={` flex w-[250px] p-4 rounded-lg
@@ -214,7 +214,7 @@ export default function HomeLayOut() {
           </div>
         </div>
         <div
-          className={`w-[340px] md:w-full  md:m-4 rounded-lg pb-10 ${
+          className={`w-[340px] md:w-[99%]  md:m-4 rounded-lg pb-10 ${
             theme ? "border border-[#212e42]/60" : "bg-[#212d40]"
           } `}
         >
