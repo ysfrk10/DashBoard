@@ -20,64 +20,16 @@ export default function HomeLayOut() {
       .get("data.json")
       .then((res) => setTransactions(res.data.transactions));
   }, []);
-  function reRenderTable() {
-    return transactions.map((element) => {
-      return (
-        <tbody key={element.id}>
-          <tr className=" transition duration-300 hover:bg-[#0f1729]/20">
-            <td className="text-center  px-4 py-3 border-b-[#313259] border-b border-solid">
-              {element.User}
-            </td>
-            <td className="text-center px-4 py-3 border-[#313259] border-b border-solid">
-              {element.Action}
-            </td>
-            <td className=" px-4 py-3 border-b-[#313259] border-b border-solid">
-              <p
-                className={
-                  element.Amount >= 0
-                    ? "text-green-500 text-center"
-                    : "text-red-600 text-center"
-                }
-              >
-                $ {element.Amount}
-              </p>
-            </td>
-            <td className="flex justify-center text-center px-4 py-3 border-b-[#313259] border-b border-solid">
-              <div
-                className={
-                  element.Status === "Completed"
-                    ? `bg-green-500 px-2  w-fit rounded-full ${
-                        theme ? "text-main" : "text-main-dark"
-                      }`
-                    : element.Status === "Failed"
-                    ? `bg-red-600 px-2  w-fit rounded-full ${
-                        theme ? "text-main" : "text-main-dark"
-                      }`
-                    : `bg-[#35335e] px-2  w-fit rounded-full ${
-                        theme ? "text-main" : "text-main-dark"
-                      }`
-                }
-              >
-                {element.Status}
-              </div>
-            </td>
-            <td className=" px-4 py-3 border-b-[#313259] border-b border-solid">
-              <p className="text-center text-[#94a3b3]">{element.Time}</p>
-            </td>
-          </tr>
-        </tbody>
-      );
-    });
-  }
+
   if (Home) {
     return (
-      <div>
-        <div className="my-8 mx-2 mt-[100px]">
+      <div className="box-content">
+        <div className=" my-8 md:mx-2 md:mt-[100px] mx-4">
           <h1
             className={
               theme
-                ? "text-2xl font-bold text-main-dark transition[color] duration-300  "
-                : "text-2xl font-bold  transition[color] duration-300  "
+                ? " text-2xl font-bold text-main-dark transition[color] duration-300  "
+                : " text-2xl font-bold  transition[color] duration-300  "
             }
           >
             {t("DashBoard")}
@@ -85,21 +37,21 @@ export default function HomeLayOut() {
           <p
             className={
               theme
-                ? "text-sm text-main-dark transition[color] duration-300  "
-                : "text-sm text-[#94a3b3] transition[color] duration-300  "
+                ? " md:text-inherit text-sm text-main-dark transition[color] duration-300  "
+                : " md:text-inherit text-sm text-[#94a3b3] transition[color] duration-300  "
             }
           >
             {t("welcome")}
           </p>
         </div>
-        <div className="flex gap-8 mx-4">
+        <div className="w-[340px] md:w-full flex items-center flex-col md:flex-row gap-3 md:gap-8 ">
           {/* 1st card */}
           <div
             className={` flex w-[250px] p-4 rounded-lg
          ml-4 transition duration-300 ease-in-out hover:scale-105 ${
            theme
              ? "border border-[#212e42]/60 hover:shadow-[0_4px_25px_0_rgba(0,0,0,0.5)]"
-             : " bg-[#212e42]/60 hover:shadow-[0_4px_25px_0_rgba(117,95,227,0.2)]"
+             : " bg-[#212e42] hover:shadow-[0_4px_25px_0_rgba(117,95,227,0.2)]"
          }`}
           >
             <div>
@@ -202,9 +154,9 @@ export default function HomeLayOut() {
             </div>
           </div>
         </div>
-        <div className="flex gap-3">
+        <div className="md:flex gap-3">
           <div
-            className={`w-[60%]  mt-4 mx-4 rounded-xl ${
+            className={` w-[330px] md:w-[60%]  mt-4 mx-2 rounded-xl ${
               theme
                 ? "border border-[#212e42]/60  text-[#212d40]"
                 : "bg-[#212d40]"
@@ -217,43 +169,43 @@ export default function HomeLayOut() {
             <StatusPieChart />
           </div>
           <div
-            className={`w-[50%]  mt-4 mx-4 rounded-xl ${
+            className={`w-[340px] md:w-[50%] mt-4  md:mx-4 rounded-xl ${
               theme
-                ? "border border-[#212e42]/60  text-[#212d40]"
+                ? "border border-[#212e42]/60 text-[#212d40]"
                 : "bg-[#212d40]"
             }`}
           >
             <div>
-              <h1 className="text-4xl font-bold px-10 py-7 ">
+              <h1 className="text-2xl md:text-4xl font-bold px-4 md:px-10 py-7 ">
                 {t("QuickStats")}
               </h1>
-              <p className="text-lg px-10 text-[#94a3b8]  ">
+              <p className="text-lg px-4 md:px-10 text-[#94a3b8]  ">
                 {t("performance")}
               </p>
             </div>
             <div
-              className={`flex justify-between mx-2 my-4 px-10 py-3
+              className={`flex justify-between  mx-2 my-4 px-4 md:px-10 py-3
           rounded-md items-end ${theme ? "bg-[#eeeeee]" : ""}  `}
             >
               <h2 className="font text-xl">{t("Avg")}</h2>
               <p className="font-bold text-2xl text-[#8953e0]">$127.50</p>
             </div>
             <div
-              className={`flex justify-between mx-2 my-4 px-10 py-3
+              className={`flex justify-between mx-2 my-4  px-4  md:px-10 py-3
           rounded-md items-end ${theme ? "bg-[#eeeeee]" : ""}  `}
             >
               <h2 className="font text-xl">{t("Customer")}</h2>
               <p className="font-bold text-2xl text-[#8953e0]">$1,248</p>
             </div>
             <div
-              className={`flex justify-between mx-2 my-4 px-10 py-3
+              className={`flex justify-between mx-2 my-4  px-4  md:px-10 py-3
           rounded-md items-end ${theme ? "bg-[#eeeeee]" : ""}  `}
             >
               <h2 className="font text-xl">{t("Churn")}</h2>
               <p className="font-bold text-2xl text-[#8953e0]">2.3%</p>
             </div>
             <div
-              className={`flex justify-between mx-2 my-4 px-10 py-3
+              className={`flex justify-between mx-2 my-4  px-4  md:px-10 py-3
           rounded-md items-end ${theme ? "bg-[#eeeeee]" : ""}  `}
             >
               <h2 className="font text-xl"> {t("MRR")}</h2>
@@ -262,7 +214,7 @@ export default function HomeLayOut() {
           </div>
         </div>
         <div
-          className={`m-4 rounded-lg pb-10 ${
+          className={`w-[340px]  md:m-4 rounded-lg pb-10 ${
             theme ? "border border-[#212e42]/60" : "bg-[#212d40]"
           } `}
         >
@@ -272,28 +224,74 @@ export default function HomeLayOut() {
               {t("useractions")}
             </p>
           </div>
-          <table className=" w-full  text-left border-collapse m ">
-            <thead>
-              <tr>
-                <th className="text-center text-[#94a3b3] px-4 py-3 border-b-[#313259] border-b border-solid">
-                  {t("Users")}
-                </th>
-                <th className="text-center text-[#94a3b3] px-4 py-3 border-b-[#313259] border-b border-solid">
-                  {t("Action")}
-                </th>
-                <th className="text-center text-[#94a3b3] px-4 py-3 border-b-[#313259] border-b border-solid">
-                  {t("Amount")}
-                </th>
-                <th className="text-center text-[#94a3b3] px-4 py-3 border-b-[#313259] border-b border-solid">
-                  {t("Status")}
-                </th>
-                <th className="text-center text-[#94a3b3] px-4 py-3 border-b-[#313259] border-b border-solid">
-                  {t("Time")}
-                </th>
-              </tr>
-            </thead>
-            {reRenderTable()}
-          </table>
+          <div className="w-full md:w-full overflow-x-auto">
+            <table className="min-w-full text-left border-collapse">
+              <thead>
+                <tr>
+                  <th className="text-center text-[#94a3b3] px-4 py-3 border-b border-b-[#313259]">
+                    {t("Users")}
+                  </th>
+                  <th className="text-center text-[#94a3b3] px-4 py-3 border-b border-b-[#313259]">
+                    {t("Action")}
+                  </th>
+                  <th className="text-center text-[#94a3b3] px-4 py-3 border-b border-b-[#313259]">
+                    {t("Amount")}
+                  </th>
+                  <th className="text-center text-[#94a3b3] px-4 py-3 border-b border-b-[#313259]">
+                    {t("Status")}
+                  </th>
+                  <th className="text-center text-[#94a3b3] px-4 py-3 border-b border-b-[#313259]">
+                    {t("Time")}
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {transactions.map((element) => (
+                  <tr
+                    key={element.id}
+                    className="transition duration-300 hover:bg-[#0f1729]/20"
+                  >
+                    <td className="text-center px-4 py-3 border-b border-b-[#313259]">
+                      {element.User}
+                    </td>
+                    <td className="text-center px-4 py-3 border-b border-b-[#313259]">
+                      {element.Action}
+                    </td>
+                    <td className="px-4 py-3 border-b border-b-[#313259]">
+                      <p
+                        className={`text-center ${
+                          element.Amount >= 0
+                            ? "text-green-500"
+                            : "text-red-600"
+                        }`}
+                      >
+                        $ {element.Amount}
+                      </p>
+                    </td>
+                    <td className="px-4 py-3 border-b border-b-[#313259]">
+                      <div
+                        className={`w-fit mx-auto px-2 rounded-full ${
+                          element.Status === "Completed"
+                            ? "bg-green-500"
+                            : element.Status === "Failed"
+                            ? "bg-red-600"
+                            : "bg-[#35335e]"
+                        } ${theme ? "text-main" : "text-main-dark"}`}
+                      >
+                        {element.Status}
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 border-b border-b-[#313259]">
+                      <p className="text-center text-[#94a3b3]">
+                        {element.Time}
+                      </p>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     );
@@ -310,16 +308,25 @@ function StatusPieChart() {
     { name: "Monthly Recurring Revenue", uv: 847, fill: "#ffc658" },
   ];
   return (
-    <ResponsiveContainer height={350} width="100%">
-      <PieChart>
-        <Pie data={data} dataKey="uv" cx="50%" cy="50%" outerRadius={120} label>
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={entry.fill} />
-          ))}
-        </Pie>
-        <Tooltip />
-      </PieChart>
-    </ResponsiveContainer>
+    <div className="w-[320px] md:w-[350px] h-[300px] m-2 md:m-0 md:h-[350px] flex justify-start md:justify-center items-center">
+      <ResponsiveContainer height="100%" width="100%">
+        <PieChart>
+          <Pie
+            data={data}
+            dataKey="uv"
+            cx="50%"
+            cy="50%"
+            outerRadius={120}
+            label
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.fill} />
+            ))}
+          </Pie>
+          <Tooltip />
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
   );
 }
 
@@ -327,7 +334,7 @@ function SettingScreen() {
   const { language, changeLanguage, t } = useLanguage();
   const { theme } = useTheme();
   return (
-    <div className="w-[50vw] ">
+    <div className=" w-[75%] md:w-[50vw] ">
       <div
         className={`flex justify-between w-full h-fit
         items-center ${
@@ -367,7 +374,6 @@ function ColorSwitches() {
         {...label}
         onChange={() => {
           SetTheme((prevMode) => !prevMode);
-          console.log(theme);
         }}
       />
     </div>

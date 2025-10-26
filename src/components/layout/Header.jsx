@@ -34,29 +34,28 @@ export default function Header() {
       className={
         showSideBar
           ? language === "en"
-            ? "transition-[margin] duration-300 flex flex-col ml-[270px] "
-            : "transition-[margin] duration-300 flex flex-col mr-[270px] "
+            ? "transition-[margin] duration-300  flex flex-col md:ml-[270px] "
+            : "transition-[margin] duration-300  flex flex-col md:mr-[270px] "
           : language === "en"
-          ? "transition-[margin] duration-300 flex flex-col ml-[60px]  "
-          : "transition-[margin] duration-300 flex flex-col mr-[60px] "
+          ? "transition-[margin] duration-300  flex flex-col md:ml-[60px]  "
+          : "transition-[margin] duration-300  flex flex-col md:mr-[60px] "
       }
     >
       <div
         className={
           theme
-            ? "h-[75px] w-full fixed z-20 backdrop-blur-sm rounded-sm text-main-dark  transition[color] duration-300  "
-            : "h-[75px]w-full fixed z-20 backdrop-blur-sm rounded-sm text-main transition[color] duration-300  "
+            ? "h-[75px] w-full md:w-[200%] md:mx-10 md:fixed z-20 backdrop-blur-sm rounded-sm text-main-dark  transition[color] duration-300  "
+            : "h-[75px] w-full md:w-[200%] md:mx-10 md:fixed z-20 backdrop-blur-sm rounded-sm text-main transition[color] duration-300  "
         }
       >
-        <div className="flex items-center gap-10 m-4 ">
+        <div className=" flex items-center gap-2 md:gap-10 my-4 ">
           <WebRoundedIcon
             onClick={() => {
               setShowSideBar(!showSideBar);
-              console.log(showSideBar);
             }}
             sx={{
               borderRadius: "10px",
-              fontSize: "40px",
+              fontSize: "25px",
               padding: "8px",
               transition: "0.3s",
               cursor: "pointer",
@@ -90,7 +89,7 @@ export default function Header() {
                   transition: "0.3s",
                   cursor: "pointer",
                   padding: "8px",
-                  fontSize: "35px",
+                  fontSize: "25px",
                 }}
               />
             </IconButton>

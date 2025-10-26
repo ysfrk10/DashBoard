@@ -22,8 +22,12 @@ export default function SideBar() {
     <div
       className={
         theme
-          ? "text-main-dark  h-full  transition[color] duration-300"
-          : "text-main transition[color] duration-300"
+          ? `${
+              showSideBar ? "  w-fit md:w-[250px]" : " md:w-fit "
+            }   bg-primary-dark text-main-dark md:h-full transition[color] duration-300`
+          : `${
+              showSideBar ? " w-fit md:w-[250px]" : " md:w-fit "
+            } text-main md:h-full transition[color] duration-300`
       }
     >
       {/* logo */}
@@ -31,8 +35,10 @@ export default function SideBar() {
         onClick={() => {
           showHome(true);
         }}
-        className="flex my-4 gap-1 items-center pr-2 pl-2 py-3
-        cursor-pointer "
+        className={`${
+          showSideBar ? "flex" : "hidden md:flex"
+        } flex my-4 gap-1 items-center pr-2 pl-2 py-3
+        cursor-pointer `}
       >
         {/* logo icon */}
         <div>
@@ -48,11 +54,14 @@ export default function SideBar() {
         </div>
         {/* logo text */}
         {showSideBar ? (
-          <div className="px-2 font-bold text-xl "> {t("DashBoard")}</div>
+          <div className=" md:px-2 md:font-bold md:text-xl ">
+            {t("DashBoard")}
+          </div>
         ) : null}
       </div>
       {showSideBar ? (
         <Divider
+          className={`${showSideBar ? "flex" : "hidden md:flex"}`}
           orientation="horizontal"
           flexItem
           sx={{
@@ -70,8 +79,8 @@ export default function SideBar() {
           <p
             className={
               theme
-                ? "text-main-dark text-[15px] pl-1 py-3"
-                : "text-main text-[15px] pl-1 py-3"
+                ? "hidden md:flex text-main-dark text-[15px] pl-1 py-3"
+                : "hidden md:flex text-main text-[15px] pl-1 py-3"
             }
           >
             {t("Navigation")}
@@ -84,8 +93,10 @@ export default function SideBar() {
             onClick={() => {
               showHome(true);
             }}
-            className=" flex items-center gap-1 pl-1 
-             hover:bg-[#1f2a3d] hover:text-[white] hover:rounded-md hover:transition duration-300"
+            className={`${
+              showSideBar ? " flex w-[200px]" : "hidden w-fit  md:flex"
+            } flex items-center gap-1 p-1
+           hover:bg-[#1f2a3d] hover:text-[white] hover:rounded-md hover:transition duration-300`}
           >
             <SpaceDashboardIcon
               sx={{
@@ -99,8 +110,10 @@ export default function SideBar() {
           {/* end dashBoard Link */}
 
           <div
-            className="flex items-center gap-1 p-1 
-           hover:bg-[#1f2a3d] hover:text-[white] hover:rounded-md hover:transition duration-300"
+            className={`${
+              showSideBar ? "flex" : "hidden w-fit md:flex"
+            } flex items-center gap-1 p-1
+           hover:bg-[#1f2a3d] hover:text-[white] hover:rounded-md hover:transition duration-300`}
           >
             <EqualizerRoundedIcon
               sx={{
@@ -114,8 +127,10 @@ export default function SideBar() {
             )}
           </div>
           <div
-            className="flex items-center gap-1 p-1
-           hover:bg-[#1f2a3d] hover:text-[white] hover:rounded-md hover:transition duration-300"
+            className={`${
+              showSideBar ? "flex" : "hidden md:flex"
+            } flex items-center gap-1 p-1
+           hover:bg-[#1f2a3d] hover:text-[white] hover:rounded-md hover:transition duration-300`}
           >
             <SummarizeOutlinedIcon
               sx={{
@@ -129,8 +144,10 @@ export default function SideBar() {
             )}
           </div>
           <div
-            className="flex items-center gap-1 p-1
-           hover:bg-[#1f2a3d] hover:text-[white] hover:rounded-md hover:transition duration-300"
+            className={`${
+              showSideBar ? "flex" : "hidden md:flex"
+            } flex items-center gap-1 p-1
+           hover:bg-[#1f2a3d] hover:text-[white] hover:rounded-md hover:transition duration-300`}
           >
             <PeopleOutlineOutlinedIcon
               sx={{
@@ -146,8 +163,10 @@ export default function SideBar() {
             )}
           </div>
           <div
-            className="flex items-center gap-1 p-1
-           hover:bg-[#1f2a3d] hover:text-[white] hover:rounded-md hover:transition duration-300"
+            className={`${
+              showSideBar ? "flex" : "hidden md:flex"
+            } flex items-center gap-1 p-1
+           hover:bg-[#1f2a3d] hover:text-[white] hover:rounded-md hover:transition duration-300`}
           >
             <TrendingUpOutlinedIcon
               sx={{
@@ -162,8 +181,10 @@ export default function SideBar() {
             onClick={() => {
               showHome(false);
             }}
-            className="flex items-center gap-1 p-1
-           hover:bg-[#1f2a3d] hover:text-[white] hover:rounded-md hover:transition duration-300"
+            className={`${
+              showSideBar ? "flex" : "hidden md:flex"
+            } flex items-center gap-1 p-1
+           hover:bg-[#1f2a3d] hover:text-[white] hover:rounded-md hover:transition duration-300`}
           >
             <SettingsOutlinedIcon
               sx={{

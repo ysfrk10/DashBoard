@@ -6,7 +6,7 @@ export default function SearchField() {
   const { theme } = useTheme();
   return (
     <div className=" flex ">
-      <form className="relative  ">
+      <form className="relative">
         <SearchIcon
           sx={{
             position: "absolute",
@@ -19,8 +19,8 @@ export default function SearchField() {
           type="text"
           className={
             theme
-              ? "pl-[40px] w-2xl focus:outline-[#8953e0] rounded-lg border-2 border-none px-4 py-2 text-main-dark bg-search-dark transition[color] duration-300  "
-              : "pl-[40px] w-2xl focus:outline-[#8953e0] rounded-lg border-2 border-none px-4 py-2 text-main bg-search transition[color] duration-300  "
+              ? "pl-10 w-[150px] md:w-2xl focus:outline-[#8953e0] rounded-lg border-2 border-none px-4 py-2 text-main-dark bg-search-dark transition[color] duration-300  "
+              : "pl-10 w-[150px] md:w-2xl focus:outline-[#8953e0] rounded-lg border-2 border-none px-4 py-2 text-main bg-search transition[color] duration-300  "
           }
           placeholder={t("search")}
         />

@@ -1,14 +1,15 @@
 import SideBar from "./components/layout/sideBar";
 import Header from "./components/layout/Header";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { LanguageContext } from "./contexts/languageContext";
 import { useTheme } from "./contexts/themeContext";
 import "./index.css";
 function App() {
   const { language } = useContext(LanguageContext);
   const { theme } = useTheme();
-
+  localStorage.getItem("theme");
   useEffect(() => {
+    localStorage.setItem("theme", theme.toString());
     theme
       ? document.documentElement.classList.add("dark")
       : document.documentElement.classList.remove("dark");
@@ -18,13 +19,14 @@ function App() {
       dir={language === "en" ? "ltr" : "rtl"}
       className={
         theme
-          ? "bg-primary-dark w-full h-screen color-text-main-dark flex mb-4 "
-          : "bg-primary  w-full h-screen text-white flex mb-4"
+          ? "flex bg-primary-dark w-full h-screen color-text-main-dark mb-4 "
+          : "flex bg-primary  w-full h-screen text-white mb-4"
       }
     >
-      <div className="fixed h-full ">
+      <div className=" w-[80%]  md:w-fit z-50 md:fixed h-full  ">
         <SideBar />
       </div>
+
       <Header />
     </div>
   );

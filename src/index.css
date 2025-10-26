@@ -48,12 +48,11 @@
   --color-accent-dark: #755fe3;
   --color-text-main-dark: #1f2937;
   --color-text-subtle-dark: #4b5563;
+  box-sizing: content-box;
 }
 body {
   background-color: var(--color-primary);
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+
   transition: background-color 0.3s, color 0.3s;
 }
 body ::selection {
