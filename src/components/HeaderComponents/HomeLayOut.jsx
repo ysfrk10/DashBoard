@@ -23,8 +23,8 @@ export default function HomeLayOut() {
 
   if (Home) {
     return (
-      <div className="box-content">
-        <div className=" my-8 md:mx-2 md:mt-[100px] mx-4">
+      <div>
+        <div className=" my-8 md:mt-[100px] ">
           <h1
             className={
               theme
@@ -156,7 +156,7 @@ export default function HomeLayOut() {
         </div>
         <div className="md:flex gap-3">
           <div
-            className={` w-[330px] md:w-[60%]  mt-4 mx-2 rounded-xl ${
+            className={` w-[330px] md:w-[60%]  mt-4 mx-2 md:mx-4 rounded-xl ${
               theme
                 ? "border border-[#212e42]/60  text-[#212d40]"
                 : "bg-[#212d40]"
@@ -169,7 +169,7 @@ export default function HomeLayOut() {
             <StatusPieChart />
           </div>
           <div
-            className={`w-[340px] md:w-[50%] mt-4  md:mx-4 rounded-xl ${
+            className={`w-[340px] md:w-[50%] mt-4  md:ml-4 rounded-xl ${
               theme
                 ? "border border-[#212e42]/60 text-[#212d40]"
                 : "bg-[#212d40]"
@@ -214,7 +214,7 @@ export default function HomeLayOut() {
           </div>
         </div>
         <div
-          className={`w-[340px]  md:m-4 rounded-lg pb-10 ${
+          className={`w-[340px] md:w-full  md:m-4 rounded-lg pb-10 ${
             theme ? "border border-[#212e42]/60" : "bg-[#212d40]"
           } `}
         >
@@ -308,7 +308,7 @@ function StatusPieChart() {
     { name: "Monthly Recurring Revenue", uv: 847, fill: "#ffc658" },
   ];
   return (
-    <div className="w-[320px] md:w-[350px] h-[300px] m-2 md:m-0 md:h-[350px] flex justify-start md:justify-center items-center">
+    <div className="w-[320px] md:w-full h-[350px] m-2 md:m-0 md:h-[350px] flex justify-start md:justify-center items-center">
       <ResponsiveContainer height="100%" width="100%">
         <PieChart>
           <Pie

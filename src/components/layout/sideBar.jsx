@@ -67,7 +67,7 @@ export default function SideBar() {
           sx={{
             backgroundColor: "#313259",
             height: "0.5px",
-            width: "98%",
+            width: "200px",
             marginY: "13.4px",
           }}
         />

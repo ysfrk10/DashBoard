@@ -34,8 +34,8 @@ export default function Header() {
       className={
         showSideBar
           ? language === "en"
-            ? "transition-[margin] duration-300  flex flex-col md:ml-[270px] "
-            : "transition-[margin] duration-300  flex flex-col md:mr-[270px] "
+            ? "transition-[margin] duration-300  flex flex-col md:ml-[210px] "
+            : "transition-[margin] duration-300  flex flex-col md:mr-[210px] "
           : language === "en"
           ? "transition-[margin] duration-300  flex flex-col md:ml-[60px]  "
           : "transition-[margin] duration-300  flex flex-col md:mr-[60px] "
@@ -44,8 +44,8 @@ export default function Header() {
       <div
         className={
           theme
-            ? "h-[75px] w-full md:w-[200%] md:mx-10 md:fixed z-20 backdrop-blur-sm rounded-sm text-main-dark  transition[color] duration-300  "
-            : "h-[75px] w-full md:w-[200%] md:mx-10 md:fixed z-20 backdrop-blur-sm rounded-sm text-main transition[color] duration-300  "
+            ? "h-[75px] w-full md:w-[200%] md:px-10 md:fixed z-20 backdrop-blur-sm rounded-sm text-main-dark  transition[color] duration-300  "
+            : "h-[75px] w-full md:w-[200%] md:px-10 md:fixed z-20 backdrop-blur-sm rounded-sm text-main transition[color] duration-300  "
         }
       >
         <div className=" flex items-center gap-2 md:gap-10 my-4 ">
